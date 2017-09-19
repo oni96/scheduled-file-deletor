@@ -1,8 +1,6 @@
 package scheduled.file.deletor;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -11,7 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Aniruddha
  */
 public class ScheduledFileDeletor {
@@ -39,7 +36,6 @@ public class ScheduledFileDeletor {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
 
-        //System.out.println("The Command as shown is: " + "DEL " + fileAddresses.get(0));
         while (true) {
             Calendar c = Calendar.getInstance();
             String currentTime = sdf.format(c.getTime());
