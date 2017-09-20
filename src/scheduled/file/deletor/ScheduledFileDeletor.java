@@ -16,7 +16,7 @@ public class ScheduledFileDeletor {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         Scanner s = new Scanner(System.in);
         ArrayList<String> fileAddresses = new ArrayList<>();
@@ -41,7 +41,7 @@ public class ScheduledFileDeletor {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
 
-        while (true) {
+        while (fileAddresses.size()>0) {
             Calendar c = Calendar.getInstance();
             String currentTime = sdf.format(c.getTime());
             for (int i = 0; i < fileAddresses.size(); i++) {
@@ -51,17 +51,16 @@ public class ScheduledFileDeletor {
                     if (file.exists()) {
                         file.delete();
                         System.out.println(fileAddresses.get(i) + " was deleted at "+ timeOfDeletion.get(i));
+                        fileAddresses.remove(i);
                     } else {
                         System.out.println("File " + fileAddresses.get(i) + " was not found!");
-                    }
-                    fileCount++;
+                    }                    
                 } else {
                     System.out.print("Waiting...\b\b\b\b\b\b\b\b\b\b");
                 }
 
             }
-            if(fileCount==fileAddresses.size())
-                break;
+            
         }
     }
 }
